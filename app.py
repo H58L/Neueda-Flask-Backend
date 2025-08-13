@@ -17,6 +17,13 @@ def get_stock_data():
     period = request.args.get('period', '1mo')  # Default to 1 month if not provided
 
     try:
+           # Create a session with a User-Agent
+        import requests
+        session = requests.Session()
+        session.headers.update({
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+        })
+        
         stock = yf.Ticker(stock_ticker)
         stock_info = stock.history(period=period)  # Fetch data based on selected period
 
