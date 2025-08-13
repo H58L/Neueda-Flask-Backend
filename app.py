@@ -5,6 +5,7 @@ from flask import Flask, jsonify, request
 import yfinance as yf
 from flask_cors import CORS
 
+yf.set_tz_cache_location(os.path.join("/tmp", "py-yfinance"))
 app = Flask(__name__)
 CORS(app)
 
